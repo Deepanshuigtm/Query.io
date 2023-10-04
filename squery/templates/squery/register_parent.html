@@ -1,0 +1,59 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+register
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="for-form-parent">
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form-parent">
+            <div style="display:flex; justify-content:space-between">
+                <div class="title"> Parent Login</div>
+                <div style="width:30px"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 cancelparenticon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              </div>
+            </div>
+          <form action="">
+            <div class="input-boxes">
+                <p style="margin-bottom:10px;margin-top: 50px;">Roll Number</p>
+              <div style="display:flex ;flex-direction:column; gap:10px">
+                <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="Enter your Roll Number" required name="email">
+                  </div>
+                  <p style="margin-top:25px">Password</p>
+                  <div class="input-box -pass">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Enter your password" required value="secret" name="password">
+                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+    
+              </div>
+              </div>
+              <!-- <div class="text"><a href="register.html">Forgot password?</a></div> -->
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div style="display:flex; gap:90px">
+                <div class="text sign-up-text">Student ? <label for="flip"><a href="{% url "register_student"%}">Student Login</a></label></div>
+              <div class="text sign-up-text">Admin ? <label for="flip"><a href="{% url "register_admin"%}">Admin Login</a></label></div>
+              </div>
+            </div>
+        </form>
+          </div>
+        </div>
+        </div>
+        
+
+{% endblock%}
+{% block js %}
+<script src="{% static "squery/script.js" %}"/>
+{% endblock %}

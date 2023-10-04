@@ -1,0 +1,401 @@
+
+h2{
+    padding-bottom: 2rem;
+    font-size: 3rem;
+}
+.descrip-1{
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: rgb(204, 204, 204);
+}
+.title-heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(231, 252, 245);
+    
+}
+.section-edit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("pexels-pixabay-316093.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center center;
+    height: 100vh;
+    width: auto;
+    margin-top: 3rem;
+    background-color: rgba(0, 0, 0, 1); 
+    
+}
+
+.title-heading button{
+    background-color: #339af0;
+}
+.downanimate{
+  transition: all 0.5s;
+}
+.downanimate:hover{
+  transform: translateY(10%);
+}
+
+.hPNPOv {
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    /* row-gap: 8px;
+    column-gap: 8px; */
+    white-space: nowrap;
+    /* -webkit-user-select: none; */
+    text-decoration: none;
+    flex-shrink: 0;
+    color: inherit;
+    font-style: inherit;
+    font-variant-caps: inherit;
+    font-stretch: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-size-adjust: inherit;
+    font-kerning: inherit;
+    font-variant-alternates: inherit;
+    font-variant-ligatures: inherit;
+    font-variant-numeric: inherit;
+    font-variant-east-asian: inherit;
+    font-feature-settings: inherit;
+    font-optical-sizing: inherit;
+    font-variation-settings: inherit;
+    font-weight: 500;
+    transition-duration: 120ms;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: border, background-color, color, box-shadow, opacity;
+    font-size: 1.6rem;
+    height: 4.8rem;
+    border-radius: 3rem;
+    padding-top: 0px;
+    padding-right: 2.4rem;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    background-image: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+    text-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+    color: #fff;
+    padding-left: 2rem;
+    margin-top: 2rem;
+}
+.icon-getstarted{
+    stroke: #fff;
+}
+.login-sec{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:14%;
+    margin: 0 7%;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+.login-sec p {
+    color:rgb(204, 204, 204);
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}
+.login-sec a{
+  text-decoration: none;
+}
+.login-sec h3{
+    font-size: 2.2rem;
+    color: #fff;
+}
+.-log{
+    background-color: rgb(22, 22, 22);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 3.5rem;
+    border-radius: 14px;
+    box-shadow: rgba(147, 147, 147, 0.5) 0px 5px 10px;
+}
+.-log:hover{
+    box-shadow: rgba(55, 55, 55, 0.5) 1px 5px 10px;
+    cursor: pointer;
+}
+.features-sec{
+    margin-top: 10rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:1%;
+    margin-bottom: 100rem;    /* temprary */
+    align-items: center;
+    justify-content: center;
+    filter: none;
+}
+.features-sec div{
+    background-color: rgb(43, 43, 43);
+    padding:3rem 3rem;
+    margin: 0 1rem;
+    border-radius: 10px;
+}
+.features-sec div h4{
+    margin-bottom: 5rem;
+    font-size: 2.2rem;
+}
+.features-sec div p{
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    color: rgb(175, 175, 175);
+    line-height: 30px;
+}
+
+.for-form-admin{
+  display: none;
+}
+.for-form{
+    display: none;
+}
+.login-form-admin{
+  width: 500px;
+  margin-left: 140px;
+}
+.login-form-parent{
+  width: 500px;
+  margin-left: 140px;
+  background-color: rgb(15, 15, 15);
+}
+.cancelparenticon:hover{
+  cursor: pointer;
+}
+.canceladminicon:hover{
+  cursor: pointer;
+}
+.cancel-icon:hover{
+  cursor: pointer;
+  color: #fff;
+
+}
+.forms{
+    position: absolute;
+    top:20%;
+    left:3%;
+  
+    width:30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30%;
+    padding-right: 150px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+}
+
+.form-content .login-form,
+.form-content .signup-form{
+  width: calc(100% / 2 - 25px);
+  width: 140%;
+}
+.forms .form-content .title{
+  position: relative;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+.forms .form-content .title:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 25px;
+  background: #200346;
+}
+.forms .signup-form  .title:before{
+  width: 20px;
+}
+.forms .form-content .input-boxes{
+  margin-top: 30px;
+}
+.forms .form-content .input-box{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+.form-content .input-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background-color: rgb(66, 66, 66);
+  color: #fff;
+  border-radius: 10px;  
+}
+.form-content .input-box input:focus,
+.form-content .input-box input:valid{
+  border-color: #7d2ae8;
+}
+.form-content .input-box i{
+  position: absolute;
+  color: #7d2ae8;
+  font-size: 17px;
+}
+.forms .form-content .text{
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.forms .form-content .text a{
+  text-decoration: none;
+}
+.forms .form-content .text a:hover{
+  text-decoration: underline;
+}
+.forms .form-content .button{
+  color: #fff;
+  margin-top: 40px;
+}
+.forms .form-content .button input{
+  color: #fff;
+  background: #7d2ae8;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.forms .form-content .button input:hover{
+  background: #5b13b9;
+}
+.forms .form-content label{
+  color: #5b13b9;
+  cursor: pointer;
+}
+.forms .form-content label:hover{
+  text-decoration: underline;
+}
+.forms .form-content .login-text,
+.forms .form-content .sign-up-text{
+  text-align: center;
+  margin-top: 25px;
+  color: #fff;
+}
+.container #flip{
+  display: none;
+}
+.message-content{
+  position: relative;
+  top:3rem;
+  left:38%;
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 730px) {
+  .container .cover{
+    display: none;
+  }
+  .form-content .login-form,
+  .form-content .signup-form{
+    width: 100%;
+  }
+  .form-content .signup-form{
+    display: none;
+  }
+  .container #flip:checked ~ .forms .signup-form{
+    display: block;
+  }
+
+}
+.main-container{
+  margin-top: 4%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  position: relative;
+}
+.post-sec{
+  width:60%
+}
+.main-container div{
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.side-nav{
+  background-color: #333;
+  height: 90vh;
+  position: fixed;
+  width: 20%;
+  border-radius: 7px;
+}
+.side-nav ul {
+  margin-top: 5rem;
+  list-style: none;
+  width:80%;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  color: rgb(209, 209, 209);
+  border-radius: 7px;
+}
+.rightnav{
+  left:0;
+}
+.leftnav{
+  right:0;
+}
+
+/* Style the navigation links */
+.nav-link {
+  text-decoration: none;
+  border-radius: 7px;
+  color: #fff; /* Link color */
+  padding: 5px 10px; /* Add padding to create space around the links */
+  display: block; /* Display links as block elements for full width */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transition for hover effect */
+}
+
+/* Style the links on hover */
+.nav-link:hover {
+  background-color: #007bff; /* Background color on hover */
+  color: #fff; /* Text color on hover */
+}
+.create-popup{
+  position: absolute;
+  left:30%;
+  width:40%;
+  /* display: none !important; */
+  
+}
+.sub-create{
+  background-color: rgb(37, 37, 37);
+  width:90%;
+  height: 80vh;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sub-create h3{
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+.form-block p{
+  font-size: 1.6rem;
+}

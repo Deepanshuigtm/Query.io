@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static "app.css" %}"/>
+    <link rel="stylesheet" href="{% static "squery/query.css" %}"/>
+    {% block css_files %} {% endblock %}
+</head>
+<body>
+    <header id="main-navigation">
+        <div class="header-section">
+            <a href="{% url "starting-page"%}" >
+                <img src="{% static "logoquery.png" %}"/>
+            </a>
+
+            <div class="chat-bot btn downanimate">
+                <p><a href="{% url "querys"%}" >Query</a></p>
+            </div>
+            <div class="hot-to btn downanimate">
+                <p><a href="{% url "faq"%}" >FAQ</a></p>
+            </div>
+            <div class="complain btn downanimate">
+                <p><a href="{% url "starting-page"%}" >Chat Bot</a></p>
+            </div>
+            <div class="complain btn downanimate">
+                <p><a href="{% url "starting-page"%}" >Feedback</a></p>
+            </div>
+            <div class="login">
+                <a href="{% url "starting-page"%}" >logout</a>
+            </div>
+            <div style='display: none;'class="toggle_btn">
+                <p><a href="{% url "starting-page"%}" >Toggle</a></p>
+            </div>
+        </div>
+    </header>
+    <button class="btn-mobile-nav">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button>
+    {% block content %}
+    {% endblock%}
+    <!-- <div class="about-us-section">
+        <div class="about-us">
+            <ul>
+                <li class="about-us-link"href="/about us">About Us</li>
+                <li class="Corporate-information-link"href="/about us">Corporate information</li>
+                <li class="Careers-link"href="/about us">Careers</li>
+            </ul>
+        </div>
+        <div class="customer-policies-section">
+
+            <ul>
+                <li class="heading-customer-policy">POLICIES</li>
+                <li class="FAQ-link"href="/FAQ">FAQ</li>
+                <li class="terms_of_use-link"href="/terms_of_use">Terms of Use</li>
+                <li class="privacy-policy-link"href="/privacy-policy">Privacy Policy</li>
+            </ul>
+        </div>
+    </div> -->
+</div>
+    {% block js %}
+
+    {% endblock %}
+</body>
+</html>

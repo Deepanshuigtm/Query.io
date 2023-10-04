@@ -1,0 +1,18 @@
+/* Below 1200 px  1200/16=75 */
+@media(max-width:75em){
+    html{
+        /* 9px /16px = 56.25 */
+        font-size:56.25% ;
+    }
+}
+/* Below 800 px 800/16=50 */
+@media(max-width:50em){
+    html{
+        /* 7px /16px = 43.75 */
+        font-size:43.75% ;
+    }
+    .features-sec{
+        grid-template-columns: repeat(2,1fr)!important;
+        row-gap: 5rem!important;
+    }
+}

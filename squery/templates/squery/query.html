@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Query's
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<div class ="main-container">
+    <div class="side-nav rightnav">
+        <ul>
+            <li><a class="nav-link creatBtn" href="#">Create New Query</a></li>
+            <li><a class="nav-link" href="#">Personal Query</a></li>
+            <li><a class="nav-link" href="#">Report a Query</a></li>
+            <li><a class="nav-link" href="#">Other Problem</a></li>
+            <li><a class="nav-link" href="#">Need Help</a></li>
+        </ul>
+    </div>
+    <div class="post-sec">post</div>
+    <div class="side-nav leftnav">side nav</div>
+    <div class="create-popup">
+        <div class="sub-create">
+            <div><h3>Create Query</h3></div>
+            <form class="form-block" action="/create-post/" method="POST">
+                <p>Title</p>
+                <input type="text" placeholder="title" required name="title">
+                <p>Issue name</p>
+                <input type="text" placeholder="title" required name="title">
+                <p>Discription</p>
+                <input type="text" placeholder="title" required name="title">
+                <p>More Details</p>
+                <input type="text" placeholder="title" required name="title">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="{% static "squery/script.js" %}"/>
+{% endblock %}

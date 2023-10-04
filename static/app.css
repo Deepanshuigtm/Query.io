@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+body{
+  background-color: black;
+  color: #fff;
+}
+html {
+  font-family: 'Open Sans', 'Lato', sans-serif;
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  z-index: 99;
+  max-width: 120rem;
+  width: 100%;
+}
+/* @media (max-width:1092px) {
+.header .btn,
+.header .login{
+  display: none;
+}
+.header .toggle_btn{
+  display: block;
+}
+} */
+h1{
+  font-size: 2.2rem;
+  background-color: #000;
+  color:aquamarine;
+  border-radius: 10rem;
+  width: 10rem;
+  padding-left: 0.1rem;
+  padding-top:0.6rem;
+  padding-bottom:0.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+h1:hover{
+  color:#000;
+  background-color: aquamarine;
+}
+.header-section{
+  background-color: transparent;
+  color:rgb(218, 218, 218);
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 1rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto  auto auto auto;
+  align-items: center;
+  gap:4%;
+  width: 90%;
+  position: fixed;
+  top:0.5rem;
+  border-radius: 7px;
+  letter-spacing: 1px;
+}
+.btn{
+  cursor: pointer;
+}
+.login{
+  background-color: rgb(103, 63, 215);
+  color: #fff;
+  padding:0.9rem 1.3rem;
+  border-radius: 7px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.5;
+}
+.login:hover{
+  background-color: rgb(255, 255, 255);
+  color:#000
+}
+
+#main-navigation {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#main-navigation a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.btn:hover{
+  color: aquamarine;
+}
+.about-us-section{
+  display: flex;
+  color:#fff;
+  justify-content: center;
+  gap:20%;
+  grid-row: 2;
+}
+/* forms parent */
+.input-boxes{
+  font-size: 1.8rem;
+  
+}
+.for-form-parent{
+  display: grid;
+  grid-template-rows:1fr 1fr;
+}
+.btn-mobile-nav{
+  border: none;
+  background-color: none;
+  cursor: pointer;
+
+  /* display: none; */
+}
+.icon-mobile-nav{
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+}
+.icon-mobile-nav[name="close-outline"]{
+  display: none;
+}
+.w-6{
+  height: 3rem;
+}
+.header-section a img{
+  width:13rem;
+}
