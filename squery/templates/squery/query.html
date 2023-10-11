@@ -13,28 +13,101 @@ Query's
 <div class ="main-container">
     <div class="side-nav rightnav">
         <ul>
-            <li><a class="nav-link creatBtn" href="#">Create New Query</a></li>
+            <li><a id="creatBtn" class="nav-link" href="#">Create New Query</a></li>
             <li><a class="nav-link" href="#">Personal Query</a></li>
             <li><a class="nav-link" href="#">Report a Query</a></li>
             <li><a class="nav-link" href="#">Other Problem</a></li>
             <li><a class="nav-link" href="#">Need Help</a></li>
         </ul>
     </div>
-    <div class="post-sec">post</div>
-    <div class="side-nav leftnav">side nav</div>
-    <div class="create-popup">
-        <div class="sub-create">
-            <div><h3>Create Query</h3></div>
-            <form class="form-block" action="/create-post/" method="POST">
-                <p>Title</p>
-                <input type="text" placeholder="title" required name="title">
-                <p>Issue name</p>
-                <input type="text" placeholder="title" required name="title">
-                <p>Discription</p>
-                <input type="text" placeholder="title" required name="title">
-                <p>More Details</p>
-                <input type="text" placeholder="title" required name="title">
+    <div class="post-sec">
+        <div class="write-post-container">
+            <form action="{% url 'create_post' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="message-wrong">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="user-profile">
+                    <img src="images/profile-pic.png">
+                    <div>
+                        <p>Kush Chandak</p>
+                        <small>public <i class="fas fa-caret-down"></i></small>
+                    </div>
+                </div>
+                <div class="post-input-container">
+                    <div class="cont-title">
+                        <textarea rows="1" name="title" placeholder="Title"></textarea>
+                    </div>
+                    <div>
+                        <textarea rows="3" name="description" placeholder="What's Your Query. Please describe.."></textarea>
+                    </div>
+                    <div class="add-post-links">
+                        <a><label for="image-upload" style="cursor: pointer;">
+                            <img src="images/photo.png">Photo
+                        </label>
+                        <input type="file" name="image" accept="image/*" id="image-upload" style="display: none;"></a>
+                        <a href="#"><img src="images/photo.png">Video</a>
+                        <a href="#"><img src="images/feeling.png">Feeling Activity</a>
+                        <button class="btn-submit" type="submit">Submit</button>
+                    </div>
+                </div>
             </form>
+        </div>
+        
+        <div class="sub-post">
+            {% if post_setting %}
+                {% for post in posts %}
+                    <div class="cont-post">
+                        <div class="post-setting">
+                            <div class="postcontent">
+                                <h3>name</h3>
+                                <p class="date-post">
+                                    {% load tz %}
+                                    {{ post.date|timezone:"Asia/Kolkata"|date:"F d Y, P" }}
+                                </p>                      
+                                <h4>{{ post.title }}</h4>
+                                <p class="discrip">{{ post.description }}</p>
+                            </div>
+                            <div class="imgae">
+                                <image src="{{ post.image.url }}"></image>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for post in posts %}
+                    <div class="cont-post">
+                        <h3>name</h3>
+                        <p class="date-post">
+                            {% load tz %}
+                            {{ post.date|timezone:"Asia/Kolkata"|date:"F d Y, P" }}
+                        </p>                      
+                        <h4>{{ post.title }}</h4>
+                        <image src="{{ post.image.url }}"></image>
+                        <p class="discrip">{{ post.description }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="side-nav leftnav">
+        <div class="setting-cont">
+            <h2>Display Settings</h2>
+            <div>
+                <h3 id="dropdown-toggle">Posts Grid</h3>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">Option 1</a>
+                    <a href="#">Option 2</a>
+                    <a href="#">Option 3</a>
+                </div>
+                <h3>Theme</h3>
+            </div>
         </div>
     </div>
 </div>

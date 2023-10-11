@@ -31,20 +31,20 @@
                 <p><a href="{% url "starting-page"%}" >Feedback</a></p>
             </div>
             <div class="login">
-                <a href="{% url "starting-page"%}" >logout</a>
+                <a href="{% url "Logout"%}" >logout</a>
             </div>
             <div style='display: none;'class="toggle_btn">
                 <p><a href="{% url "starting-page"%}" >Toggle</a></p>
             </div>
         </div>
     </header>
-    <button class="btn-mobile-nav">
+    <!-- <button class="btn-mobile-nav">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
           
         <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-    </button>
+    </button> -->
     {% block content %}
     {% endblock%}
     <!-- <div class="about-us-section">
