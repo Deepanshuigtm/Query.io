@@ -49,11 +49,11 @@ Query's
                     </div>
                     <div class="add-post-links">
                         <a><label for="image-upload" style="cursor: pointer;">
-                            <img src="images/photo.png">Photo
+                            <img src="{% static "squery/image.svg" %}">Photo
                         </label>
                         <input type="file" name="image" accept="image/*" id="image-upload" style="display: none;"></a>
-                        <a href="#"><img src="images/photo.png">Video</a>
-                        <a href="#"><img src="images/feeling.png">Feeling Activity</a>
+                        <!-- <a href="#"><img src="{% static "squery/image-outline.svg" %}">Video</a> -->
+                        <a href="#"><img src="{% static "squery/smile-2.svg" %}">Feeling Activity</a>
                         <button class="btn-submit" type="submit">Submit</button>
                     </div>
                 </div>
@@ -61,12 +61,12 @@ Query's
         </div>
         
         <div class="sub-post">
-            {% if post_setting %}
+            
                 {% for post in posts %}
                     <div class="cont-post">
                         <div class="post-setting">
                             <div class="postcontent">
-                                <h3>name</h3>
+                                <h3>{{ username }}</h3>
                                 <p class="date-post">
                                     {% load tz %}
                                     {{ post.date|timezone:"Asia/Kolkata"|date:"F d Y, P" }}
@@ -77,23 +77,24 @@ Query's
                             <div class="imgae">
                                 <image src="{{ post.image.url }}"></image>
                             </div>
+                            <div class="votes_sec">
+                                <p><span class="totalvotes" id="total-votes-{{ post.id }}">{{ post.likes }}</span></p>
+                                <div>
+                                    
+                                    <a href="{% url 'like' post.id %}" data-vote="vote" class="vote-button " data-post-id="{{ post.id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                          <path d="M320 458.16S304 464 256 464s-74-16-96-32H96a64 64 0 01-64-64v-48a64 64 0 0164-64h30a32.34 32.34 0 0027.37-15.4S162 221.81 188 176.78 264 64 272 48c29 0 43 22 34 47.71-10.28 29.39-23.71 54.38-27.46 87.09-.54 4.78 3.14 12 7.95 12L416 205"
+                                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="22" />
+                                          <path d="M416 271l-80-2c-20-1.84-32-12.4-32-30h0c0-17.6 14-28.84 32-30l80-4c17.6 0 32 16.4 32 34v.17A32 32 0 01416 271zM448 336l-112-2c-18-.84-32-12.41-32-30h0c0-17.61 14-28.86 32-30l112-2a32.1 32.1 0 0132 32h0a32.1 32.1 0 01-32 32zM400 464l-64-3c-21-1.84-32-11.4-32-29h0c0-17.6 14.4-30 32-30l64-2a32.09 32.09 0 0132 32h0a32.09 32.09 0 01-32 32zM432 400l-96-2c-19-.84-32-12.4-32-30h0c0-17.6 13-28.84 32-30l96-2a32.09 32.09 0 0132 32h0a32.09 32.09 0 01-32 32z"
+                                             stroke="currentColor" stroke-miterlimit="10" stroke-width="22" />
+                                        </svg>
+                                      </a>
+                                </div>
+                                 
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
-            {% else %}
-                {% for post in posts %}
-                    <div class="cont-post">
-                        <h3>name</h3>
-                        <p class="date-post">
-                            {% load tz %}
-                            {{ post.date|timezone:"Asia/Kolkata"|date:"F d Y, P" }}
-                        </p>                      
-                        <h4>{{ post.title }}</h4>
-                        <image src="{{ post.image.url }}"></image>
-                        <p class="discrip">{{ post.description }}</p>
-                    </div>
-                {% endfor %}
-            {% endif %}
         </div>
     </div>
     <div class="side-nav leftnav">
@@ -112,7 +113,7 @@ Query's
     </div>
 </div>
 
-{% endblock %}
 {% block js %}
-<script src="{% static "squery/script.js" %}"/>
+    <script src="{% static "squery/script.js" %}"></script>
+{% endblock %}
 {% endblock %}

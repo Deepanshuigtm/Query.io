@@ -1,0 +1,55 @@
+
+{% load static %}
+
+{% block title %}
+Query's
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/ParentsLogin.css" %}"/>
+{% endblock %}
+
+{% block content %}
+    <nav>
+        <div class="nav-content">
+          <div class="logo">
+            <label><img src="SQuery-logo.png" style=" width: 120px;
+                height: 77px;
+                border-radius: 8px;
+                overflow: hidden;
+                margin-top: 6px;"></a></label>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#" style="background-color: #324279;
+                color:#7186c4;">Home <i class="mark fa-solid fa-house"></i></a></li>
+            <li><a href="CHATBOT.html">ATTENDANCE <i class="mark fa-regular fa-comment"></i></a></li>
+            <li><a href="#">RESULT <i class="mark fa-regular fa-hand"></i></a></li>
+            <li><a href="#">FEEDBACK <i class="mark fa-solid fa-question"></i></a></li>
+            <li><a href="#">LOGOUT <i class="mark fa-solid fa-right-from-bracket"></i></a></li>
+          </ul>
+        </div>
+    </nav>
+    <br>
+    <div id="container">
+        <div>
+            <a class="link" href="Attendance.html">
+                <img class="img" src="attendance.png" alt="attendance">
+                <h2>Attendance</h2>
+            </a>
+        </div>
+        <div>
+            <a class="link" href="Result.html">
+                <img class="img" src="Result.png" alt="Result">
+                <h2>Result</h2>
+            </a>
+        </div>
+        <div>
+            <a class="link" href="Result.html">
+                <img class="img" src="feedback.png" alt="Feedback Form">
+                <h2>Feedback Form</h2>
+            </a>
+        </div>
+        
+    </div>
+
+{% endblock %}

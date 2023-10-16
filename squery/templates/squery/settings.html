@@ -64,8 +64,30 @@ Admin Dashboard
             </div>
         </div>
         <div class="My-Account" style="width: 90%; height:auto; margin-left: 12%;">
-            <div class="profile-overview" style="display:block;position: relative;">
-                <div class="name-section">
+          <div class="admin-dashsec" style="position: relative;">
+            <div class="student_query_sec">
+              <div class="query_posts">
+                {% for post in posts %}
+                    <div class="post--">
+                        <div class="ment-post">
+                          <div class="imgae">
+                            <image src="{{ post.image.url }}"></image>
+                          </div>
+                          <div class="postcontent">
+                            <h4>{{ post.title }}</h4>
+                          </div>
+                          <div class="post-btns">
+                            <p>{{ post.likes }} votes</p>
+                            <button>View</button>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+            <div class="profile-overview" style="position: relative;">
+                <div class="name-section" style="display:none">
                     <div class="profile-img" style="padding:20px 20px;border-radius: 7px;" background-color:rgb(19, 19, 19) ; border-radius: 10px;">
                         <img style="border-radius: 50%; width:20%; height:auto;" alt="profile-image" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60">
                         <!-- <img alt="profile-image" src="{{seller_profile_photo.image.url}}"> -->
@@ -268,5 +290,8 @@ Admin Dashboard
         </div>
         
 </section>
+{% block js %}
+    <script src="{% static "squery/script.js" %}"></script>
+{% endblock %}
 {% endblock %}
 

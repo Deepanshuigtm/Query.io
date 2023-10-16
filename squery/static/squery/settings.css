@@ -45,13 +45,68 @@
 }
 
 .tn{
-    background-color: rgb(21, 21, 21);
+    background:transparent;
     border:none;
     color: #fff;
     font-size: 1.6rem;
-    background-image: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+    /* background-image: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%); */
 }
 .tn{
     cursor: pointer;
     
+}
+.query_posts{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 4rem;
+    row-gap: 5rem;
+}
+.ment-post{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    background-color: rgb(28, 28, 28);
+    border-radius: 8px;
+}
+.imgae{
+    height:20rem;
+    width:auto;
+}
+.ment-post image{
+    border-radius: 8px;
+}
+.postcontent{
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    color: rgb(207, 207, 207);
+}
+.post-btns{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.post-btns button{
+    border: none;
+    border-radius: 15px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    background-color: rgb(103, 63, 215);
+    color: rgb(195, 195, 195);
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    transition: all 0.4s;
+}
+.post-btns button:hover{
+    color: rgb(103, 63, 215);
+    background-color:rgb(195, 195, 195);
+}
+.student_query_sec{
+    max-height: 80vh;
+    overflow-y:auto ;
+}
+.name-section{
+    max-height: 80vh;
+    overflow-y:auto ;
 }
