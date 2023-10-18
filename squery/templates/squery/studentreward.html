@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+student-certificates
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<h2>kdjbqekj</h2>
+
+{% for post in posts %}
+<div class="postcontent">
+    <p>name</p>
+    <h3>{{ username }}</h3>
+    <p class="date-post">
+        <p>date</p>
+        {% load tz %}
+        {{ post.date|timezone:"Asia/Kolkata"|date:"F d Y, P" }}
+    </p>                      
+    <h4>{{ post.title }}</h4>
+    <p class="discrip">{{ post.description }}</p>
+</div>
+
+<div class="imgae">
+    <image src="{{ post.image.url }}"></image>
+</div>
+{% endfor %}
+
+{% block js %}
+    <script src="{% static "squery/script.js" %}"></script>
+{% endblock %}
+{% endblock %}

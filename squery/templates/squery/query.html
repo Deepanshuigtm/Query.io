@@ -13,7 +13,7 @@ Query's
 <div class ="main-container">
     <div class="side-nav rightnav">
         <ul>
-            <li><a id="creatBtn" class="nav-link" href="#">Create New Query</a></li>
+            <li><a id="creatBtn" class="nav-link" href="{% url "rewards" %}">Rewards</a></li>
             <li><a class="nav-link" href="#">Personal Query</a></li>
             <li><a class="nav-link" href="#">Report a Query</a></li>
             <li><a class="nav-link" href="#">Other Problem</a></li>
@@ -36,7 +36,7 @@ Query's
                 <div class="user-profile">
                     <img src="images/profile-pic.png">
                     <div>
-                        <p>Kush Chandak</p>
+                        <p>{{ username }}</p>
                         <small>public <i class="fas fa-caret-down"></i></small>
                     </div>
                 </div>

@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+Post details
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+<link rel="stylesheet" href="{% static "squery/post_details.css" %}"/>
+<link rel="stylesheet" href="{% static "squery/settings.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="main-section">
+    <div class="post-sub">
+        <div class="imga2">
+            <image src="{{ post.image.url }}"></image>
+        </div>
+        <div>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
+        </div>
+    </div>
+</div>
+
+{% block js %}
+    <script src="{% static "squery/postdetail.js" %}"></script>
+{% endblock %}
+{% endblock %}

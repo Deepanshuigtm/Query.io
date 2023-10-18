@@ -2,8 +2,8 @@
 .settings-section{
     display: grid;
     grid-template-columns: 200px 1fr;
-    column-gap: 10%;
-    width: 90%;
+    column-gap: 6%;
+    width: 93%;
     height: auto;
     position: relative;
     margin-top: 8rem;
@@ -20,6 +20,10 @@
     justify-content: center;
     border:1px solid #868e96;
     font-size: 18px;
+    transition: all 0.4s;
+}
+.set:hover{
+    padding:20px 20px;
 }
 
 .profile-img img{
@@ -109,4 +113,7 @@
 .name-section{
     max-height: 80vh;
     overflow-y:auto ;
+}
+.active{
+     background-image: linear-gradient(92.88deg, rgb(30, 62, 178) 9.16%, rgb(61, 48, 143) 43.89%, rgb(77, 49, 155) 64.72%);
 }

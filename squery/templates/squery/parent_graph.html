@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+performance
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+{% endblock %}
+
+{% block content %}
+{% if message|length > 0 %}
+<h1 class="message-content">{{ message }}</h1>
+{% endif %}
+
+<h1>Scatter Plot of Roll Numbers vs. Marks</h1>
+<img src="{% static 'scatter_plot.png' %}" alt="Scatter Plot">
+
+{% endblock%}
+{% block js %}
+<script src="{% static "squery/script.js" %}"/>
+{% endblock %}

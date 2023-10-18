@@ -12,6 +12,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+import numpy as np
+import pandas as pd
+
+import matplotlib
+matplotlib.use('Agg')  # Use the Agg backend (non-interactive, suitable for server-side use)
+import matplotlib.pyplot as plt
+
 @login_required
 def create_post(request):
     if request.method == 'POST':
@@ -72,12 +79,16 @@ def register_student (request):
     return render(request,"squery/register_student.html")
 
 def adminDashboard (request):
+
     posts = QueryPost.objects.filter(likes__gt=0)
+    user = User.objects.all()
+
     context = {
         'posts': posts,
-        'post_setting':True
+        'user':user
     }
     return render(request,"squery/settings.html", context)
+
 def register_admin (request):
     return render(request,"squery/register_admin.html")
 
@@ -168,3 +179,73 @@ def signup(request):
         messages.success(request, "Account created Sucessfuly 🥳")
         return redirect('querys')
     return render (request,"squery/signup.html")
+
+def post_details(request, post_id):
+    
+    user = request.user  # Get the current user
+
+    # Get the post or return a 404 response if it doesn't exist
+    post = get_object_or_404(QueryPost, id=post_id)
+
+    context = {
+        'post': post,
+        'username':request.user
+    }
+
+    return render(request,"squery/post_details.html", context)
+
+def parent_graph(request):
+    import os
+
+    file_path = os.path.join(os.path.dirname(__file__), 'marks.csv')
+    dataset = pd.read_csv(file_path)
+    # dataset = dataset.drop("Sec A (140)", axis=1)
+    # dataset = dataset.drop("Sec B", axis=1)
+
+    marks = dataset.iloc[0, 1:].values
+    rollnumber = rollnumber = dataset.iloc[0, 0:].values
+
+    column_names = dataset.columns[1:].to_numpy()
+    print(len(column_names))
+    print(len(marks))
+    print(marks)
+    print(column_names)
+
+    # marks = dataset['Final Mark'].values
+    # rollnumber = dataset['Class Roll'].values
+
+    plt.scatter(marks, column_names,label="Marks", color="blue", marker="o")
+    
+    # plt.xlabel("Roll Number")
+    # plt.ylabel("Marks")
+    plt.title("Scatter Plot of Roll Numbers vs. Marks")
+    plt.legend()
+
+    plot_image_path = os.path.join("static", "scatter_plot.png")
+    plt.savefig(plot_image_path)
+    plt.close()
+
+    return render(request,"squery/parent_graph.html")
+
+@login_required()
+def rewards(request):
+
+    posts = QueryPost.objects.all()
+    context = {
+        'posts': posts,
+        'username':request.user,
+    }
+
+    return render(request,"squery/rewardform.html",context)
+
+def admin_rewards(request,user_id):
+    print(user_id)
+    posts = QueryPost.objects.filter(user_id=user_id)
+    
+    print(posts)
+    context = {
+        'posts': posts,
+        'username':request.user
+    }
+
+    return render(request,"squery/studentreward.html",context)

@@ -714,3 +714,52 @@ background: var(--bg-color);
 .post-btns p{
   font-size: 1.2rem;
 }
+.setadmin{
+  background: linear-gradient(rgba(85, 73, 255, 0),#281035 ,#200c0c ,rgba(182,229,255,0));
+}
+.messageindex{
+  top:20rem;
+  left:38%;
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(103, 63, 215);
+  width:24%;
+  position: absolute;
+  top:15rem;
+  left:40%;
+  border-radius: 7px;
+  font-size: 1.2rem;
+  z-index: 99;
+}
+.messageindex li{
+  list-style: none;
+}
+.creatBtn:hover{
+  cursor: pointer;
+}
+.rewardform{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rem;
+}
+.rewardform form{
+  width:60%;
+  background-color: rgb(20, 20, 20);
+  padding: 5rem 1rem;
+  border-radius: 8px;
+}
+.add-post-links{
+  margin-top: 3rem;
+}
+.section_rewards{
+  display: flex;
+  gap:20%;
+  align-items: center;
+  justify-content: center;
+}
+.section_rewards p{
+  font-size: 1.4rem;
+}

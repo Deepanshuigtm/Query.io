@@ -14,9 +14,12 @@ urlpatterns = [
     path("logout/", views.handlelogout, name="Logout"),
     path("admin-dashboard/", views.adminDashboard, name = "admin_dash"),
     path("parent/", views.parent, name = "parent"),
+    path("rewards/", views.rewards, name = "rewards"),
+    path("parent/parent_graph", views.parent_graph, name = "parent_graph"),
     path('<int:post_id>/like/', views.like, name='like'),
+    path('<int:post_id>/post_details/', views.post_details, name='post_details'),
+    path('<int:user_id>/admin_rewards/', views.admin_rewards, name='admin_rewards'),
 
     # path('vote/<int:post_id>/', views.like, name='vote_post'),
-
 
 ]

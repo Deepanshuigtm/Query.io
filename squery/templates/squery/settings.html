@@ -11,10 +11,10 @@ Admin Dashboard
 {% endblock %}
 
 {% block content %}
-<section class="text-gray-600 body-font main-section">
+<section class="setadmin body-font main-section">
     <div class="settings-section" style="column-gap:0">
         <div class="settings-menu">
-            <div class="dashboard-set set" style="border-radius: 7px;">                  
+            <div class="dashboard-set active set" style="border-radius: 7px;">                  
                 <button class="btn-dashboard tn">
                   <div class="for-flex">
                     Student Query
@@ -63,7 +63,7 @@ Admin Dashboard
                 </button>
             </div>
         </div>
-        <div class="My-Account" style="width: 90%; height:auto; margin-left: 12%;">
+        <div class="My-Account" style="width: 90%; height:auto; margin-left: 8%;">
           <div class="admin-dashsec" style="position: relative;">
             <div class="student_query_sec">
               <div class="query_posts">
@@ -78,7 +78,7 @@ Admin Dashboard
                           </div>
                           <div class="post-btns">
                             <p>{{ post.likes }} votes</p>
-                            <button>View</button>
+                            <button><a href="{% url 'post_details' post.id %}">View</a></button>
                           </div>
                         </div>
                     </div>
@@ -154,137 +154,16 @@ Admin Dashboard
                 </div>
             </div>
             <div class="sec-art" style="display:none;">
-              {% if allProds %}
-                <div class="all-item-section" style="display:grid;grid-template-columns: 1fr; gap: 40px;">
-                  {% for i in allProds %}
-                  <div style="display: grid;grid-template-columns: auto 1fr;">
-                    <div style="border-radius: 17px; width:400px; height:auto; background-color:#000;" id="carouselExampleIndicators" class="carousel slide background-image" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        {% for t in i.img.all|slice:"1:" %}
-                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        {% endfor %}
-                      </ol>
-                      
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <div class="overlay"></div>
-                          <img class="d-block" style=" border-radius: 17px; background-color:#000;" src="{{i.img.all.first.image.url}}" alt="First slide" id = "imgpr{{i.product_id}}">
-                        </div>
-                        {% for t in i.img.all|slice:"1:" %}
-                          <div class="carousel-item">
-                            <div class="overlay"></div>
-                            <img class="d-block" style=" border-radius: 17px;"src="{{t.image.url}}" alt="Second slide">
-                          </div>
-                        {% endfor %}
-                      </div>
-                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                  </div>
-            
-                  <div style=" margin-right: 10px; margin-left: 30px; padding-top: 20px; padding-left:20px; padding-right:31%; border-radius:10px; background-color: rgb(35, 35, 35);" class ="">
-                      <div style="display:flex; gap:50px;">
-                          <div style="display:flex; color:rgb(132, 132, 132); flex-direction:column; gap:20px;">
-                              <div><p>NAME</p></div>
-                              <div><p>PRICE</p></div>
-                              <div><p>CATEGORY</p></div>
-                              <div><p>SUBCATEGORY</p></div>
-                              <div><p>DISCRIPTION</p></div>
-                          </div>
-                        <div style="padding-left:20px; display: flex; flex-direction:column; gap:20px; color: rgb(201, 201, 201);">
-                          <div class="name-product for-blur" style="margin-left:0px;">
-                            <!-- <p>{{i.product_name}}</p> -->
-                          </div>
-                          <div class="price-product">             
-                              <!-- <p>₹{{i.price}}</p> -->
-                          </div>
-                          <div class="Category-of-product">             
-                              <!-- <p>{{i.category}}</p> -->
-                          </div>
-                          <div class="Category-of-product">             
-                            <!-- <p>{{i.SubCategory}}</p> -->
-                        </div>
-                          <div class="Description-of-product">             
-                              <!-- <p>{{i.Description}}</p> -->
-                            </div>
-                      </div>
-                  </div>
-                  </div>
-                  <div style="position:absolute; right:1%;">
-                      <button class="edit-button product-id-{{i.product_id}}">
-                          <div class="edit-sec" style="display:flex; gap:10px;">
-                            <span>Edit</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 icon-edit">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                            </svg>
-                          </div>            
-                        </button>
-                  </div>
-                <!-- <div class="edit-section-item product-id-{{i.product_id}}">
-                  <div class="form-group">
-                    <div class="section-for-name" style="display:flex; justify-content:space-between">
-                      <label class="colorto" for="{{i.product_id}}_name">Name</label>
-                    <svg xmlns="http://www.w3.org/2000/svg" style="width:30px; height:auto; margin-bottom:10px;" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 cancel-icon colorto">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    </div>
-                    <input class="form-control" type = "text"  name = "{{i.product_id}}_name" value = "{{i.product_name}}" disabled>
-                  </div>
-                  <div class="form-group">
-                    <label class="colorto" for = "{{i.product_id}}_price">Price</label>
-                    <input class="form-control" type ="Number" value = {{i.price}} disabled name = "{{i.product_id}}_price">
-                  </div>
-                  <div class="form-group">
-                    <label class="colorto" for="{{i.product_id}}_desc">Description</label>
-                    <input class="form-control" type ="text" value = "{{i.desc}}" disabled name = "{{i.product_id}}_desc">
-                  </div>
-                  <div class="form-group">
-                    <label class="colorto" for="{{i.product_id}}_category">Category</label>
-                    <input class="form-control" type = "text" value = "{{i.category}}" disabled name = "{{i.product_id}}_category">
-                  </div>
-                  <div class="form-group">
-                    <label class="colorto" for="{{i.product_id}}_subcat">SubCategory</label>
-                    <input class="form-control" type = "text" value = "{{i.subcategory}}" disabled name = "{{i.product_id}}_subcat">
-                  </div>
-                  <div class="form-group">
-                    <label class="colorto" for="{{i.product_id}}_image">Image</label>
-                    <div class="preview-section" style="display:flex;justify-content: space-around; ">
-                      <input type="file" id="{{i.product_id}}_image" accept="image/*" multiple>
-                      <button type="button" style="background-color: #868e96; padding: 4px 10px; border-radius: 8px;" onclick="previewImages('{{i.product_id}}_image', '{{i.product_id}}_preview')">Preview</button>
-                    </div>
-                    <div id="{{i.product_id}}_preview" class="previewContainer"></div>
-                    <div id="{{i.product_id}}_imageNames" class="imageNamesContainer"></div>
-                  </div>
-                  
-                  <div class = "edit-section">
-                    <button class = "edit_button_seller btn btn-primary btn-lg btn-block " data-pid = "{{i.product_id}}">Edit</button>
-                  </div>
-                  <div class = "inactive">
-                    <p>Are you sure?</p>
-                    <button class = "cancel_button_seller btn btn-danger " data-pid = "{{i.product_id}}">cancel</button>
-                    <button class = "save_button_seller btn btn-success" data-pid = "{{i.product_id}}">save</button>
-                  </div>
-                  <br>
-                </div>
-                </div>
-                   -->
-                  <!-- {% endfor %} -->
-                </div>
-              <!-- {% else %}
-              <div class ="">
-                <h1 class = "h1">no arts have been added </h1>
-                <a href = "/seller/add_new/" class = "link-primary h1">Add Now</a>
-          
+              {% for i in user %}
+
+              <div class="section_rewards">
+                <p>{{ i.first_name }}</p>
+                <p>{{ i.last_name }}</p>
+                <p>{{ i.email }}</p>
+                <a href="{% url 'admin_rewards' i.id %}">Certificates</a>
               </div>
-          
-              {% endif %} -->
-              </div>
+
+              {% endfor %}
             </div>
       </div>
         </div>

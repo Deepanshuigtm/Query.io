@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/feedback.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Feedback Form</h2>
+        <form action="submit_feedback.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+<br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+<br>
+            <label for="subject">How satisfied are you with our services?</label>
+            <div class="radio-buttons">
+                <input type="radio" id="satisfied" name="satisfaction" value="Satisfied" required>
+                <label for="satisfied">Very Satisfied</label>
+
+                <input type="radio" id="very-satisfied" name="satisfaction" value="Very Satisfied" required>
+                <label for="very-satisfied">Satisfied</label>
+
+                <input type="radio" id="not-satisfied" name="satisfaction" value="Not Satisfied" required>
+                <label for="not-satisfied">Not Satisfied</label>
+            </div>
+<br>
+            <label for="message">Feedback:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <div class="center">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+{% block js %}
+    <script src="{% static "squery/script.js" %}"></script>
+{% endblock %}
+{% endblock %}

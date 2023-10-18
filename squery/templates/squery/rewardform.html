@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Rewards
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="rewardform">
+    <form action="{% url 'create_post' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="message-wrong">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="user-profile">
+            <img src="images/profile-pic.png">
+            <div>
+                <p>{{ username }}</p>
+                <small>public <i class="fas fa-caret-down"></i></small>
+            </div>
+        </div>
+        <div class="post-input-container">
+            <div class="cont-title">
+                <textarea rows="1" name="title" placeholder="Title"></textarea>
+            </div>
+            <div>
+                <textarea rows="1" name="description" placeholder="Organization Name"></textarea>
+            </div>
+            <div class="add-post-links">
+                <a><label for="image-upload" style="cursor: pointer;">
+                    <img src="{% static "squery/image.svg" %}">certificate
+                </label>
+                <input type="file" name="image" accept="image/*" id="image-upload" style="display: none;"></a>
+                <!-- <a href="#"><img src="{% static "squery/image-outline.svg" %}">Video</a> -->
+                <!-- <a href="#"><img src="{% static "squery/smile-2.svg" %}">Feeling Activity</a> -->
+                <button class="btn-submit" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% block js %}
+    <script src="{% static "squery/script.js" %}"></script>
+{% endblock %}
+{% endblock %}
