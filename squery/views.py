@@ -80,7 +80,7 @@ def register_student (request):
 
 def adminDashboard (request):
 
-    posts = QueryPost.objects.filter(likes__gt=0)
+    posts = QueryPost.objects.filter(likes__gt=2)
     user = User.objects.all()
 
     context = {
@@ -109,6 +109,21 @@ def handlelogin(request):
         return  render (request,"squery/register_student.html",{"message":message} )
     return render(request, "squery/register_student.html")
 
+def handlelogin_admin(request):
+    if request.method == 'POST':
+        roll_number = request.POST.get('email')
+        password = request.POST.get('password')
+        print(roll_number,password)
+
+        user = User.objects.filter(username=roll_number, password=password).first()
+
+        if user:
+            messages.success(request, "Logged in")
+            login(request,user)
+            return redirect("admin_dash")
+        message = "Incorrect credential"
+        return  render (request,"squery/register_admin.html",{"message":message} )
+    return render(request, "squery/register_admin.html")
 
 def parent(request):
     return render(request,"squery/parent.html")
@@ -249,3 +264,8 @@ def admin_rewards(request,user_id):
     }
 
     return render(request,"squery/studentreward.html",context)
+
+@login_required()
+def feedback(request):
+
+    return render(request,"squery/feedback_form.html")

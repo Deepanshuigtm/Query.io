@@ -22,7 +22,8 @@ register
               </svg>
               </div>
             </div>
-          <form action="">
+          <form action="/adminlogin/" method="POST">
+            {% csrf_token %} 
             <div class="input-boxes">
                 <p style="margin-bottom:10px;margin-top: 50px;">Roll Number</p>
               <div style="display:flex ;flex-direction:column; gap:10px">
