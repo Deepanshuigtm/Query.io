@@ -17,6 +17,7 @@ urlpatterns = [
     path("admin-dashboard/", views.adminDashboard, name = "admin_dash"),
     path("parent/", views.parent, name = "parent"),
     path("rewards/", views.rewards, name = "rewards"),
+    path("repeaterform/", views.repeaterform, name = "repeater_form"),
     path("parent/parent_graph", views.parent_graph, name = "parent_graph"),
     path('<int:post_id>/like/', views.like, name='like'),
     path('<int:post_id>/post_details/', views.post_details, name='post_details'),

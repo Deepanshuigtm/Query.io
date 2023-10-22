@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Repeater-form
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "squery/style.css" %}"/>
+<link rel="stylesheet" href="{% static "squery/repeater.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Repeater-BackForm</h3>
+        <p> Rewrite the Past, Illuminate Your Future!</p>
+        <div class="btn-group">
+          <a class="btn-item" href="https://www.w3docs.com/learn-html.html">Result</a>
+         
+        </div>
+      </div>
+      <form class="repeater_form" action="/">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2>Register here</h2>
+        </div>
+        <div class="info">
+          <input class="fname" type="text" name="name" placeholder="Full name">
+          <input type="text" name="name" placeholder="Email">
+          <input type="text" name="name" placeholder="Roll No">
+          <select>
+            <option value="course-type" selected>Semester*</option>
+            <option value="short-courses">Semester 1</option>
+            <option value="featured-courses">Semester 2</option>
+            <option value="undergraduate">Semester 3</option>
+            <option value="diploma">Semester 4</option>
+            <option value="certificate">Semester 5</option>
+            <option value="masters-degree">Semester 6</option>
+          </select>
+      
+          <select>
+            <option value="course-type" selected>Course type*</option>
+            <option value="short-courses">B.TECH CSE DSML</option>
+            <option value="featured-courses">B.TECH CSE Core</option>
+            <option value="undergraduate">B.TECH CSE Cyber Security</option>
+            <option value="diploma">B.Tech EC</option>
+            <option value="certificate">B.TECH ME</option>
+            <option value="masters-degree">B.Tech Civil</option>
+          
+          </select>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="checkbox"><span>I agree to the <a href="https://www.w3docs.com/privacy-policy">Policy of  Repeater-exam </a></span>
+        </div>
+        <button type="submit" href="/">Submit</button>
+      </form>
+    </div>
+  </body>
+
+{% block js %}
+  <script src="{% static "squery/script.js" %}"></script>
+{% endblock %}
+{% endblock %}

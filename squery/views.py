@@ -269,3 +269,7 @@ def admin_rewards(request,user_id):
 def feedback(request):
 
     return render(request,"squery/feedback_form.html")
+@login_required()
+def repeaterform(request):
+
+    return render(request,"squery/repeater_form.html")
