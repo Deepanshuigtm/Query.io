@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import date
 from .models import QueryPost, student,Likes
 from django.shortcuts import redirect,get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, RewardsForm
 from django.utils import timezone
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
@@ -43,6 +43,28 @@ def create_post(request):
         form = PostForm()
     
     return render(request, 'squery/query.html', {'form': form})
+
+@login_required
+def add_rewards(request):
+    if request.method == 'POST':
+        form = RewardsForm(request.POST, request.FILES)
+        if not form.is_valid():
+            print('error is')
+            print(form.errors)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user  # Assuming you have user authentication
+            post.save()
+            form.save_m2m()  # Save ManyToMany relationships (certificates)
+            messages.success(request, "Rewards Added Successfully 🥳")
+            return redirect('rewards')  # Redirect to a page showing all posts
+        else:
+            messages.error(request, "Enter valid Details / Document Format ⚠️")
+    else:
+        form = RewardsForm()
+    
+    return render(request, 'squery/rewardform.html', {'form': form})
+
 
 def startingpage(request):
     return render (request,"squery/index.html")

@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dash_sec = document.querySelector('.dashboard-set');
     const info_sec = document.querySelector('.info-set');
+    const art_sec = document.querySelector('.orders-set ');
 
     btn_activity.addEventListener("click", function(e){
         e.preventDefault();
@@ -67,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             dash_sec.classList.remove('active')
             info_sec.classList.remove('active')
+            art_sec.classList.add('active');
 
         }
     })
@@ -77,21 +79,22 @@ document.addEventListener("DOMContentLoaded", function () {
         // info_section.style.display="block";
         if (info_section.style.display === 'none'){
             query_sec.style.display = "none"
+            sec_art.style.display = "none"
             info_section.style.display="block";
             dash_sec.classList.remove('active')
+            art_sec.classList.remove('active');
             info_sec.classList.add('active');
 
-        }else{
-            info_section.style.display="none";
-            
         }
     });
     query_btn.addEventListener("click", function(e) {
         e.preventDefault();
         query_sec.style.display = "block";
         info_section.style.display = "none";
+        sec_art.style.display = "none"
         dash_sec.classList.add('active')
         info_sec.classList.remove('active');
+        art_sec.classList.remove('active');
     });
     
 });

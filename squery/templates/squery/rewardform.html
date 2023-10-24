@@ -11,7 +11,7 @@ Rewards
 
 {% block content %}
 <div class="rewardform">
-    <form action="{% url 'create_post' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'add_rewards' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="message-wrong">
             {% if messages %}
@@ -40,9 +40,8 @@ Rewards
                 <a><label for="image-upload" style="cursor: pointer;">
                     <img src="{% static "squery/image.svg" %}">certificate
                 </label>
-                <input type="file" name="image" accept="image/*" id="image-upload" style="display: none;"></a>
-                <!-- <a href="#"><img src="{% static "squery/image-outline.svg" %}">Video</a> -->
-                <!-- <a href="#"><img src="{% static "squery/smile-2.svg" %}">Feeling Activity</a> -->
+                <input type="file" name="file" accept=".png, .jpg, .jpeg, .pdf, .doc, .docx" id="image-upload" style="display: none;"></a>
+                <!-- <input type="file" name="file" accept="image/*" id="image-upload" style="display: none;"></a> -->
                 <button class="btn-submit" type="submit">Submit</button>
             </div>
         </div>
