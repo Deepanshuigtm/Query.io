@@ -12,21 +12,22 @@ student-certificates
 {% block content %}
 <h2>kdjbqekj</h2>
 
-{% for post in posts %}
+{% for i in rewards %}
 <div class="postcontent">
     <p>name</p>
     <h3>{{ username }}</h3>
-    <p class="date-post">
+    <!-- <p class="date-post">
         <p>date</p>
         {% load tz %}
         {{ post.date|timezone:"Asia/Kolkata"|date:"F d Y, P" }}
-    </p>                      
-    <h4>{{ post.title }}</h4>
-    <p class="discrip">{{ post.description }}</p>
+    </p>                       -->
+    <h4>{{ i.title }}</h4>
+    <p class="discrip">{{ i.description }}</p>
+    <p>{{ i.file }}</p>
 </div>
 
 <div class="imgae">
-    <image src="{{ post.image.url }}"></image>
+    <image src="{{ i.file.url }}"></image>
 </div>
 {% endfor %}
 

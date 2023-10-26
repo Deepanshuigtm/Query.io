@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import date
-from .models import QueryPost, student,Likes
+from .models import QueryPost, student,Likes, Certificate
 from django.shortcuts import redirect,get_object_or_404
 from .forms import PostForm, RewardsForm
 from django.utils import timezone
@@ -8,9 +8,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.models import User
+
+# from squery.task import send_mail_func
+from squery.task import send_email_to_client
+
+# from core.celery import app 
 
 import numpy as np
 import pandas as pd
@@ -18,6 +23,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')  # Use the Agg backend (non-interactive, suitable for server-side use)
 import matplotlib.pyplot as plt
+
 
 @login_required
 def create_post(request):
@@ -67,6 +73,8 @@ def add_rewards(request):
 
 
 def startingpage(request):
+    for i in range(100):
+        send_email_to_client()
     return render (request,"squery/index.html")
 
 
@@ -277,11 +285,11 @@ def rewards(request):
 
 def admin_rewards(request,user_id):
     print(user_id)
-    posts = QueryPost.objects.filter(user_id=user_id)
+    rewards = Certificate.objects.filter(user_id=user_id)
     
-    print(posts)
+    print(rewards)
     context = {
-        'posts': posts,
+        'rewards': rewards,
         'username':request.user
     }
 

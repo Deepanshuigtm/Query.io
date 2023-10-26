@@ -156,12 +156,14 @@ Admin Dashboard
             <div class="sec-art" style="display:none;">
               {% for i in user %}
 
+              {% if i.first_name != "" %}
               <div class="section_rewards">
                 <p>{{ i.first_name }}</p>
                 <p>{{ i.last_name }}</p>
                 <p>{{ i.email }}</p>
                 <a href="{% url 'admin_rewards' i.id %}">Certificates</a>
               </div>
+              {% endif %}
 
               {% endfor %}
             </div>
