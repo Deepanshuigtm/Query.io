@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 body{
-  background-color: black;
-  color: rgb(234, 234, 234);
-  margin: 0;
+  background-color: black !important;
+  color: rgb(234, 234, 234) !important;
+  margin: 0 !important;
 }
 
 html {

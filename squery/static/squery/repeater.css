@@ -114,3 +114,55 @@
 .repeater_form{
     background-color: rgb(29, 29, 29);
 }
+/* Style the dropdown button */
+.dropbtn {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style the dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the sub-dropdown button */
+.sub-dropbtn {
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  width: 100%;
+  text-align: left;
+}
+
+/* Style the sub-dropdown content (hidden by default) */
+.sub-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Show the sub-dropdown content on click */
+.sub-dropdown:hover .sub-dropdown-content {
+  display: block;
+}

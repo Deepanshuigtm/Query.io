@@ -154,18 +154,32 @@ Admin Dashboard
                 </div>
             </div>
             <div class="sec-art" style="display:none;">
-              {% for i in user %}
-
-              {% if i.first_name != "" %}
-              <div class="section_rewards">
-                <p>{{ i.first_name }}</p>
-                <p>{{ i.last_name }}</p>
-                <p>{{ i.email }}</p>
-                <a href="{% url 'admin_rewards' i.id %}">Certificates</a>
-              </div>
-              {% endif %}
-
-              {% endfor %}
+              <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Roll Number</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Certifications</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in user %}
+                    {% if i.first_name != "" %}
+                      <tr>
+                        <!-- <th scope="row">{{ forloop.counter }}</th> -->
+                        <th>{{ i }}</th>
+                        <td>{{ i.first_name }}</td>
+                        <td>{{ i.last_name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td><a href="{% url 'admin_rewards' i.id %}">Certificates</a></td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
       </div>
         </div>

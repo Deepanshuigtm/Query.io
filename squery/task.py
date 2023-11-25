@@ -7,8 +7,9 @@ from celery import shared_task
 
 def send_email_to_client():
     subject="this email is from django server"
-    message = "this is a test message from django email for testing madhurrrrrr!"
+    message = "this is a test message from django email for testing Madhur!"
     from_email=settings.EMAIL_HOST_USER
+    # recipient_list=["maheshwari.kush20@gmail.com"]
     recipient_list=["madhursinghnain@gmail.com"]
 
     send_mail(

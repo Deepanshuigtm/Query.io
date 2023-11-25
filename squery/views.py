@@ -11,6 +11,9 @@ from django.http import JsonResponse
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.models import User
+import time
+
+from .task2 import test_func
 
 # from squery.task import send_mail_func
 from squery.task import send_email_to_client
@@ -73,9 +76,14 @@ def add_rewards(request):
 
 
 def startingpage(request):
-    for i in range(100):
-        send_email_to_client()
-    return render (request,"squery/index.html")
+    # send_email_to_client()
+    print(request.user)
+    context = {
+        'rewards': rewards,
+        'username':request.user
+    }
+
+    return render (request,"squery/index.html",context)
 
 
 @ login_required()
@@ -303,3 +311,7 @@ def feedback(request):
 def repeaterform(request):
 
     return render(request,"squery/repeater_form.html")
+
+def test(request):
+    test_func.delay()
+    return HttpResponse("Done 2")

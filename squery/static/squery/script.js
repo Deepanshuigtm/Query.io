@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    function toggleDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      function toggleSubDropdown(subDropdownId) {
+        var subDropdown = document.getElementById(subDropdownId);
+        if (subDropdown.style.display === "block") {
+          subDropdown.style.display = "none";
+          console.log("qwdqws")
+        } else {
+          subDropdown.style.display = "block";
+        }
+      }
+      
+
     const message_sec = document.querySelector('.messages');
     const messageindex = document.querySelector('.messageindex');
     
