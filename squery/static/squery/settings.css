@@ -33,7 +33,9 @@
 .settings-menu{
     display: flex;
     flex-direction: column;
-    gap:30px
+    gap:30px;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 .seticon{
     color:rgb(231, 255, 255);

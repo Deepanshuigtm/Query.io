@@ -50,11 +50,14 @@ class QueryPost(models.Model):
     description = models.TextField(max_length=150)
     votes = models.ManyToManyField(User, related_name="votes_posts", blank=True)
     likes = models.IntegerField(default=0)
+    is_resolved  = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
     def total_likes(self):
         return self.likes.count()
+    def get_resolved_status(self):  # Changed method name to 'get_resolved_status'
+        return self.is_resolved
 
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_likes")

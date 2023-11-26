@@ -75,9 +75,11 @@ Query's
                                 <h4>{{ post.title }}</h4>
                                 <p class="discrip">{{ post.description }}</p>
                             </div>
-                            <div class="imgae">
-                                <image src="{{ post.image.url }}"></image>
-                            </div>
+                            {% if post.image != '' %}
+                                <div class="imgae">
+                                    <image src="{{ post.image.url }}"></image>
+                                </div>
+                            {% endif %}
                             <div class="votes_sec">
                                 <p><span class="totalvotes" id="total-votes-{{ post.id }}">{{ post.likes }}</span></p>
                                 <div>

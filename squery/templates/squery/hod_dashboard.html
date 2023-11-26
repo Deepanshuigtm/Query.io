@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Admin Dashboard
+HoD Dashboard
 {% endblock %}
 
 {% block css_files %}
@@ -39,7 +39,7 @@ Admin Dashboard
             <div class="orders-set set"style="border-radius: 7px;">
                 <button class="btn-orders tn">
                   <div class="for-flex">
-                    activity
+                    Resolved Query
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 seticon">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -50,18 +50,6 @@ Admin Dashboard
                 </button>
 
             </div>
-            <div class="info-set set"style="border-radius: 7px;">
-              <button class="btn-inf tn">
-                <div class="for-flex">
-                  Personal Querys
-              <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 seticon for-th">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-                    </svg>                      
-              </div>
-              </div>
-              </button>
-          </div>
             <div class="info-set set"style="border-radius: 7px;">
                 <button class="btn-inf tn">
                   <div class="for-flex">
@@ -93,7 +81,6 @@ Admin Dashboard
                           <div class="post-btns">
                             <p>{{ post.likes }} votes</p>
                             <button><a href="{% url 'post_details' post.id %}">View</a></button>
-                            <button><a href="{% url 'resolved_post' post.id %}">Resolved</a></button>
                           </div>
                         </div>
                     </div>
@@ -169,32 +156,22 @@ Admin Dashboard
                 </div>
             </div>
             <div class="sec-art" style="display:none;">
-              <table class="table table-dark table-striped">
-                <thead>
-                  <tr>
-                    <!-- <th scope="col">#</th> -->
-                    <th scope="col">Roll Number</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Certifications</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for i in user %}
-                    {% if i.first_name != "" %}
-                      <tr>
-                        <!-- <th scope="row">{{ forloop.counter }}</th> -->
-                        <th>{{ i }}</th>
-                        <td>{{ i.first_name }}</td>
-                        <td>{{ i.last_name }}</td>
-                        <td>{{ i.email }}</td>
-                        <td><a href="{% url 'admin_rewards' i.id %}">Certificates</a></td>
-                      </tr>
-                    {% endif %}
-                  {% endfor %}
-                </tbody>
-              </table>
+                <div class="query_posts">
+                    {% for post in resolved_posts %}
+                        <div class="post--">
+                            <div class="ment-post">
+                              <div class="postcontent">
+                                <h3>{{ post.title }}</h3>
+                              </div>
+                              <p>{{ post.date }}</p>
+                              <div class="post-btns">
+                                <p>{{ post.likes }} votes</p>
+                                <button><a href="{% url 'post_details' post.id %}">View</a></button>
+                              </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                  </div>
             </div>
       </div>
         </div>

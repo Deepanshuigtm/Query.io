@@ -12,6 +12,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 from django.contrib.auth.models import User
 import time
+from datetime import datetime, timedelta
 
 from .task2 import test_func
 
@@ -42,8 +43,7 @@ def create_post(request):
         else:
             posts = QueryPost.objects.all()
             context = {
-                'posts': posts,
-                
+                'posts': posts,        
             }
             messages.success(request, "Enter valid Details / Image Format  ⚠️")
             return render(request, 'squery/query.html',context)
@@ -76,6 +76,7 @@ def add_rewards(request):
 
 
 def startingpage(request):
+    test_func.delay()
     # send_email_to_client()
     print(request.user)
     context = {
@@ -118,7 +119,7 @@ def register_student (request):
 
 def adminDashboard (request):
 
-    posts = QueryPost.objects.filter(likes__gt=2)
+    posts = QueryPost.objects.filter(likes__gt=2,is_resolved=False)
     user = User.objects.all()
 
     context = {
@@ -126,6 +127,20 @@ def adminDashboard (request):
         'user':user
     }
     return render(request,"squery/settings.html", context)
+
+def hodDashboard (request):
+    fifteen_days_ago = datetime.now() - timedelta(days=30)
+
+    posts = QueryPost.objects.filter(date__lt=fifteen_days_ago)
+    resolved_posts = QueryPost.objects.filter(is_resolved=True)
+    user = User.objects.all()
+
+    context = {
+        'posts': posts,
+        'resolved_posts':resolved_posts,
+        'user':user
+    }
+    return render(request,"squery/hod_dashboard.html", context)
 
 def register_admin (request):
     return render(request,"squery/register_admin.html")
@@ -246,34 +261,58 @@ def post_details(request, post_id):
     }
 
     return render(request,"squery/post_details.html", context)
+def resolved_post(request, post_id):
+    
+    user = request.user  # Get the current user
+    post = get_object_or_404(QueryPost, pk=post_id)
+
+    post.is_resolved = True
+    post.save()
+    
+    posts = QueryPost.objects.filter(likes__gt=2,is_resolved=False)
+    user = User.objects.all()
+
+    context = {
+        'posts': posts,
+        'user':user
+    }
+
+    return HttpResponseRedirect(reverse('admin_dash'))
 
 def parent_graph(request):
     import os
 
     file_path = os.path.join(os.path.dirname(__file__), 'marks.csv')
     dataset = pd.read_csv(file_path)
-    # dataset = dataset.drop("Sec A (140)", axis=1)
-    # dataset = dataset.drop("Sec B", axis=1)
+    dataset['CT-1 (Marks: 20)'].fillna(0, inplace=True)
+    dataset['CT-2 (Marks: 20)'].fillna(0, inplace=True)
+    dataset['CT-3 (Marks: 20)'].fillna(0, inplace=True)
+    dataset.drop('CT-5 (Marks: 20)', axis=1, inplace=True)
+    dataset.drop('CT-4 (Marks: 20)', axis=1, inplace=True)
+    dataset.drop('Class Test (Total of best 4, Marks: 80)', axis=1, inplace=True)
+    dataset.drop('Sec A (140)', axis=1, inplace=True)
+    dataset.drop('Sec B', axis=1, inplace=True)
+    dataset.drop('Final Mark', axis=1, inplace=True)
+    dataset.drop('Total (Marks: 120)', axis=1, inplace=True)
 
-    marks = dataset.iloc[0, 1:].values
-    rollnumber = rollnumber = dataset.iloc[0, 0:].values
+    columns_to_sum = ['CT-1 (Marks: 20)', 'CT-2 (Marks: 20)', 'CT-3 (Marks: 20)', 'Attendance (Marks: 20)','Observation (Marks: 20)']
+    dataset['total_marks'] = dataset[columns_to_sum].sum(axis=1)
 
-    column_names = dataset.columns[1:].to_numpy()
-    print(len(column_names))
-    print(len(marks))
-    print(marks)
-    print(column_names)
+    x = dataset.iloc[0,1:].values
+    y = dataset.columns[1:].to_numpy()
+    # Define colors for each bar
+    colors = ['blue', 'green', 'red']  # Add more colors if you have more columns
 
-    # marks = dataset['Final Mark'].values
-    # rollnumber = dataset['Class Roll'].values
+    # Create the bar chart
+    plt.figure(figsize=(14, 6))
+    bars = plt.bar(y, x, color=colors)
 
-    plt.scatter(marks, column_names,label="Marks", color="blue", marker="o")
-    
-    # plt.xlabel("Roll Number")
-    # plt.ylabel("Marks")
-    plt.title("Scatter Plot of Roll Numbers vs. Marks")
-    plt.legend()
+    # Create a legend for each bar
+    plt.legend(bars, y)
 
+    plt.xlabel('Tests')
+    plt.ylabel('Marks')
+    plt.title('Marks in Different Tests')
     plot_image_path = os.path.join("static", "scatter_plot.png")
     plt.savefig(plot_image_path)
     plt.close()
